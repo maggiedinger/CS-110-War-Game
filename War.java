@@ -1,5 +1,10 @@
-import java.util.ArrayList;
+//Maggie Dinger
+//Assignment 10
+//April 27, 2015
 
+import java.util.ArrayList;
+/** War implements a traditional game of war using arraylists
+*/
 public class War {
    
       private Deck deck;//Create a new deck
