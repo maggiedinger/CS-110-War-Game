@@ -1,20 +1,25 @@
 import java.util.ArrayList;
-import java.util.Collections;
-//import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
 
 public class War {
-
-  public static void main( String[] args ) {
+   
+      private Deck deck;
       final int PLAYER_HAND = 26;
-      
-      Deck deck = new Deck();
-      deck.shuffle();
-//create an array list
+      private ArrayList <Card> player1 = new ArrayList <Card>(PLAYER_HAND);
+      private ArrayList <Card> player2 = new ArrayList <Card>(PLAYER_HAND);
+      private String winner;
+      private Card player1Card, player2Card;
 
-    ArrayList <Card> player1 = new ArrayList <Card>(PLAYER_HAND);
-    ArrayList <Card> player2 = new ArrayList <Card>(PLAYER_HAND);
+  //public static void main( String[] args ) {
+      
+      public void deal(){
+      deck = new Deck();
+      deck.shuffle();
+      
+   //create an array list
+
+    //ArrayList <Card> player1 = new ArrayList <Card>(PLAYER_HAND);
+    //ArrayList <Card> player2 = new ArrayList <Card>(PLAYER_HAND);
+      //deal cards to players
     while(!deck.isEmpty())
       {
          if (player1.size()==player2.size())
@@ -26,8 +31,10 @@ public class War {
             player2.add(deck.dealCard());
          } 
       }
-     while(!player1.isEmpty()&&!player2.isEmpty())
-     {
+   }
+   public void battle(){
+      while(!player1.isEmpty()&&!player2.isEmpty())
+      {
          int i=0;
          try
          {
@@ -38,6 +45,7 @@ public class War {
             
                while (((player1.get(i)).getRank()) > ((player2.get(i)).getRank()))
                {
+                  winner = "Player 1";
                   player1.add(player2.get(i));
                   player2.remove(player2.get(i));
 
@@ -47,6 +55,7 @@ public class War {
    
                while (((player2.get(i)).getRank()) > ((player1.get(i)).getRank()))
                {
+                  winner = "Player 2";
                   player2.add(player1.get(i));
                   player1.remove(player1.get(i));
 
@@ -59,10 +68,12 @@ public class War {
                   
                   if (((player1.get(0)).getRank()) > ((player2.get(0)).getRank()))
                   {
+                     winner = "Player 1";
                      break;
                   }
                   if (((player2.get(0)).getRank()) > ((player1.get(0)).getRank()))
                   {
+                      winner = "Player 2";
                      break;
                   }
   
@@ -71,6 +82,8 @@ public class War {
                   {
                      if (((player1.get(i)).getRank()) > ((player2.get(i)).getRank()))
                      {
+                        winner = "Player 1";
+
                         for (int j=0; j<=i; j++)
                         {
                            player1.add(player2.get(j));
@@ -95,6 +108,7 @@ public class War {
       
                      if (((player2.get(i)).getRank()) > ((player1.get(i)).getRank()))
                      {
+                        winner = "Player 2";
                         for (int j=0; j<=i; j++)
                         {
                            player2.add(player1.get(j));
@@ -121,12 +135,14 @@ public class War {
                   {
                      if (i > (player1.size())-1)
                      {
+                        winner = "Player 2";
                         System.out.print("Player 2 wins!");
                         System.exit(0);
                      }
                      
                      if (i > (player2.size())-1)
                      {
+                        winner = "Player 1";
                         System.out.print("Player 1 wins!");
                         System.exit(0);
                      }
@@ -206,30 +222,36 @@ public class War {
             {
                if (i > (player1.size())-1)
                {
+                  winner = "Player 2";                  
                   System.out.print("Player 2 wins!");
                   System.exit(0);
                }
                      
                if (i > (player2.size())-1)
                {
+                  winner = "Player 1";
                   System.out.print("Player 1 wins!");
                   System.exit(0);
                }
             } 
       }
+      }
                
      
-                     
+     public void outOfCards(){               
      if (player1.isEmpty())
      {
+      winner = "Player 2";
       System.out.print("Player 2 wins!");
       System.exit(0);
      }
      
      if (player2.isEmpty())
      {
+      winner = "Player 1";
       System.out.print("Player 1 wins!");
       System.exit(0);
+     }
      }
 
 //     //create a queue to load array list into
@@ -285,5 +307,26 @@ public class War {
 
 
 
+   //}
+   public Card getPlayer1Card()
+   {
+      return player1.get(0);
+   }
+   
+   public Card getPlayer2Card()
+   {
+      return player2.get(0);
+   }
+   
+   public String getWinner()
+   {
+      return winner; 
+   }
+   
+   public void reveal()
+   {
+      outOfCards();
+      player1Card=new Card(player1.get(0));
+      player2Card=new Card(player2.get(0));
    }
 }

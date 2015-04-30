@@ -1,4 +1,5 @@
-import java.util.Random;
+import javax.swing.ImageIcon;
+
 
 // Maggie Dinger
 // CS 110
@@ -22,10 +23,11 @@ public class Card
    public final int KING = 13;//King Card
    private int rank;//The rank value: value of the card
    private int suit;//The suit value: suit of the card
+   private ImageIcon cardImage;
       /** The collection of Cards */
-   private Card [] deck;
+   //private Card [] deck;
    /** Current number of Cards in Deck */
-   private int ct;
+   //private int ct;
    /**
       The Card class creates a card, given input of the
       rank and suit of the card
@@ -37,6 +39,12 @@ public class Card
       suit = s;
       rank = r;
    }
+   
+   public Card(Card card)
+     {
+      suit=card.getSuit();
+      rank=card.getRank();
+     }
    
    /**
       getSuit method returns the suit of the card
@@ -207,29 +215,25 @@ public class Card
       return compare;
    }
 
-      //tester
-   public static void main(String [] args)
-   {
-   Card card1 = new Card(1, 7);
-   System.out.print(card1.toString() + "\n");
-   Card card2 = new Card(2, 7);
-   System.out.print(card2.toString() + "\n");
-   Card card3 = new Card(3, 13);     
-   System.out.print(card3.toString() + "\n");
-   Card card4 = new Card(4, 1);
-   System.out.print(card4.toString() + "\n");
-   //System.out.print(card4.getRank() + "\n");
-   //System.out.print(card4.getSuit() + "\n");
-   System.out.print(card1.equals(card2) + "\n");
-   System.out.print(card3.equals(card4) + "\n");
-         Deck deck = new Deck();
-      deck.shuffle();
-      int i = 0;
-      while (!(deck.isEmpty()))
-         System.out.println(i++ + " : " + deck.dealCard().toString());
-      System.out.println("************");
-      i = 0;
-      while (!(deck.isEmpty()))
-         System.out.println(i++ + " : " + deck.dealCard().toString());
-   }
+      /**give image to each card
+      @param name The name of the card*/
+     public void assignImage(String name)
+     {
+      cardImage=new ImageIcon(name);
+     }
+     
+     /**get image icon from card
+     @return the image associated with the card*/
+     public ImageIcon getImage()
+     {
+      return cardImage;
+     }
+     
+     /**get name of image of card
+     @return the name of the image associated with the card*/
+     public String getImageName()
+     {
+      String imageName=cardImage.toString();
+      return imageName;
+     }
 }
