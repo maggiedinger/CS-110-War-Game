@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class EventObject extends JFrame
 {
+   private War game;
    private JButton button1;
    private JButton button2;
    
@@ -24,7 +25,7 @@ public class EventObject extends JFrame
      // button1 = new JButton("Player 1");
       //button2 = new JButton("Player 2");
       
-
+      game = new War();
       
 
       setLayout(new BorderLayout());
