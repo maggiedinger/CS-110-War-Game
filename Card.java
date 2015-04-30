@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 
 // Maggie Dinger
 // CS 110
-// February 23, 2015
+// April 27, 2015
 // Card
 
 /**
@@ -23,13 +23,10 @@ public class Card
    public final int KING = 13;//King Card
    private int rank;//The rank value: value of the card
    private int suit;//The suit value: suit of the card
-   private ImageIcon cardImage;
-      /** The collection of Cards */
-   //private Card [] deck;
-   /** Current number of Cards in Deck */
-   //private int ct;
+   private ImageIcon cardImage; //The card's personal image
+
    /**
-      The Card class creates a card, given input of the
+      The Card constructor creates a card, given input of the
       rank and suit of the card
       @param s The suit of the card
       @param r The rank of the card
@@ -39,6 +36,11 @@ public class Card
       suit = s;
       rank = r;
    }
+   
+   /**
+      The Card constructor creates a card, given a card as input
+      @param card The card
+   */
    
    public Card(Card card)
      {
@@ -179,61 +181,30 @@ public class Card
       return compare;
    }
    
-   public boolean greaterThan(Card otherCard)
-   {
-         //create instance variable
-      boolean compare;
-         //if they are equal
-      if (otherCard.getRank() > rank)
-         {
-            //set eqaul to true
-         compare = true;
-         }
-         //if they aren't equal
-      else
-            //set equal to false
-         compare = false;
-         //return the value given to compare in loop
-      return compare;
-   }
-   
-   public boolean lessThan (Card otherCard)
-   {
-         //create instance variable
-      boolean compare;
-         //if they are equal
-      if (otherCard.getRank() < rank)
-         {
-            //set eqaul to true
-         compare = true;
-         }
-         //if they aren't equal
-      else
-            //set equal to false
-         compare = false;
-         //return the value given to compare in loop
-      return compare;
-   }
 
-      /**give image to each card
-      @param name The name of the card*/
-     public void assignImage(String name)
-     {
+   /**Assign an image to the card
+      @param name The name of the card
+   */
+   public void assignImage(String name)
+   {
       cardImage=new ImageIcon(name);
-     }
+   }
      
-     /**get image icon from card
-     @return the image associated with the card*/
-     public ImageIcon getImage()
-     {
-      return cardImage;
-     }
+   /**Get image will retrieve the image from the card
+     @return The image associated with the card
+   */
+   public ImageIcon getImage()
+   {
+     return cardImage;
+   }
      
-     /**get name of image of card
-     @return the name of the image associated with the card*/
-     public String getImageName()
-     {
+   /**Get image name  will retrieve the name of the image of 
+      that card
+     @return The name of the image associated with the card
+   */
+   public String getImageName()
+   {
       String imageName=cardImage.toString();
       return imageName;
-     }
+   }
 }

@@ -1,8 +1,6 @@
 /**
  * Representation of a Deck of cards.  
  * Initialized to a standard 52 card deck. 
- *
- * @author Jackie Horton
  */
 
 import java.util.Random;
@@ -10,15 +8,12 @@ import javax.swing.ImageIcon;
 
 public class Deck 
 {
-   /** 
-   *  Number of cards in standard deck {@value #CARDS_IN_DECK}
-   **/
-   public final static int CARDS_IN_DECK = 52;
 
-   /** The collection of Cards */
-   private Card [] deck;
-   /** Current number of Cards in Deck */
-   private int ct;
+   public final static int CARDS_IN_DECK = 52;//Number of Cards in deck
+
+   private Card [] deck;//Collection of Cards
+
+   private int ct; //Current number of Cards
    
    /**
     * Constructs a regular 52-card deck.  Initially, the cards
@@ -29,6 +24,7 @@ public class Deck
    {
       freshDeck();
    }
+   
    /**
     * Create a new collection of 52 cards, in sorted order
     */
@@ -43,7 +39,8 @@ public class Deck
             ct = ct + 1;
          }
       }
-      
+         
+         //assign images to each of the cards in the deck
       deck[0].assignImage("2s.jpg");
       deck[1].assignImage("2c.jpg");
       deck[2].assignImage("2h.jpg");
@@ -98,6 +95,7 @@ public class Deck
       deck[51].assignImage("aced.jpg");
    
    }
+   
    /** 
      * Remove and return the top Card on the Deck
      * @return A reference to a Card that was top on the Deck
@@ -107,6 +105,7 @@ public class Deck
       ct--;
       return deck[ct];
    }
+   
    /** 
      * Return current number of Cards in Deck
      * @return number of Cards in Deck
@@ -115,6 +114,7 @@ public class Deck
    {  
       return ct;
    }
+   
    /** 
      * Randomize the order of Cards in Deck
      */
@@ -131,6 +131,7 @@ public class Deck
          deck[randNum]=temp;
       }
    }
+   
    /** 
      * Determine if Deck is empty
      * @return true if there are no more cards, false otherwise
@@ -139,5 +140,4 @@ public class Deck
    {
       return (cardsRemaining() == 0);
    }
-
 }
